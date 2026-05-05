@@ -11,7 +11,7 @@ export class AppController {
     return this.appService.getHello();
   }
   @Get('getSpreadsheet')
-  getEntireSpreadsheet(){
-    return getGoogleSheet(0)
+  async getEntireSpreadsheet(){
+    return await getGoogleSheet(0)
   }
 }
