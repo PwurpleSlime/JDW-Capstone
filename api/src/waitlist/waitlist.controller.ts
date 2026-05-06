@@ -4,6 +4,8 @@ import { WaitlistService } from './waitlist.service';
 import {
   AddParentChildDto,
   AddParentChildResponseDto,
+  AddParentChildrenDto,
+  AddParentChildrenResponseDto,
   CreateParentDto,
   UpdateParentDto,
   CreateChildDto,
@@ -17,6 +19,8 @@ import {
 @ApiExtraModels(
   AddParentChildDto,
   AddParentChildResponseDto,
+  AddParentChildrenDto,
+  AddParentChildrenResponseDto,
   ParentDto,
   ChildDto,
   CreateParentDto,
@@ -39,6 +43,21 @@ export class WaitlistController {
       throw new BadRequestException('Parent payload is required');
     }
     return this.waitlistService.addParentAndChild(body.parent, body.child);
+  }
+
+  // Special POST: Create parent with multiple children
+  @Post('add-parent-children')
+  @ApiOperation({ summary: 'Create a new parent with one or more children together' })
+  @ApiBody({ type: AddParentChildrenDto })
+  @ApiResponse({ status: 201, description: 'Parent and children were created successfully', type: AddParentChildrenResponseDto })
+  async addParentAndChildren(@Body() body: AddParentChildrenDto) {
+    if (!body.parent) {
+      throw new BadRequestException('Parent payload is required');
+    }
+    if (!body.children || body.children.length === 0) {
+      throw new BadRequestException('At least one child is required');
+    }
+    return this.waitlistService.addParentAndChildren(body.parent, body.children);
   }
 
   // Parents CRUD

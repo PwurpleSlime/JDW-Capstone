@@ -113,4 +113,16 @@ export class WaitlistService {
     const newChild = await this.createChild(childData);
     return { parent, child: newChild };
   }
+
+  // Special POST: Create parent with multiple children
+  async addParentAndChildren(
+    parentData: Omit<Parent, 'id'>,
+    children: Omit<Child, 'id' | 'parentId'>[],
+  ): Promise<{ parent: Parent; children: Child[] }> {
+    const parent = await this.createParent(parentData);
+    const createdChildren = await Promise.all(
+      children.map((child) => this.createChild({ ...child, parentId: parent.id })),
+    );
+    return { parent, children: createdChildren };
+  }
 }

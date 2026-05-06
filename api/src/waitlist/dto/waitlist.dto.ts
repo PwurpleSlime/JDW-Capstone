@@ -68,3 +68,20 @@ export class AddParentChildResponseDto {
   @ApiProperty({ type: () => ChildDto })
   child!: ChildDto;
 }
+
+// Multi-child variant
+export class AddParentChildrenDto {
+  @ApiProperty({ type: () => CreateParentDto, description: 'Parent details to create together with one or more children.' })
+  parent!: CreateParentDto;
+
+  @ApiProperty({ type: () => [CreateChildWithoutParentDto], description: 'One or more children to create. parentId is assigned automatically.' })
+  children!: CreateChildWithoutParentDto[];
+}
+
+export class AddParentChildrenResponseDto {
+  @ApiProperty({ type: () => ParentDto })
+  parent!: ParentDto;
+
+  @ApiProperty({ type: () => [ChildDto] })
+  children!: ChildDto[];
+}
