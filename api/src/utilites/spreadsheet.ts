@@ -2,17 +2,17 @@ import { GoogleSpreadsheet } from "google-spreadsheet"
 import { JWT } from 'google-auth-library'
 
 function getDoc(){
-    if (!process.env.GOOGLE_SERVICE_PRIVATE_KEY) throw "Failed to get Google Service Account Private Key Env"
-    if (!process.env.GOOGLE_SERVICE_CLIENT_EMAIL) throw "Failed to get Google Service Account Client Email ENV"
-    
+    if (!process.env.GOOGLE_SERVICE_ACCOUNT) throw "Failed to get Google Service Account"
+    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT)
+
     const serviceAccountAuth = new JWT({
-        email: process.env.GOOGLE_SERVICE_CLIENT_EMAIL,
-        key: process.env.GOOGLE_SERVICE_PRIVATE_KEY,
-        scopes: [
+    email: serviceAccount.client_email,
+    key: serviceAccount.private_key,
+    scopes: [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.readonly",
     ],
-    })
+    });
     if (!process.env.GOOGLE_SPREADSHEET_URL_ID) throw "Failed to get Google Spreadsheet URL id"
     const doc = new GoogleSpreadsheet(process.env.GOOGLE_SPREADSHEET_URL_ID!, serviceAccountAuth)
     return doc

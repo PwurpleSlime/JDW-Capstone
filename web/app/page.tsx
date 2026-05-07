@@ -171,7 +171,13 @@ function LoadingScreen() {
       role="status"
       aria-live="polite"
     >
-      <span className="text-6xl mb-6" role="img" aria-label="Tiger">🐯</span>
+      {/* Full image (no cropping, no rounding, no clipping) */}
+      <img
+        src="/lilvic.png"
+        alt="Tiny Tigers mascot"
+        className="mb-6 max-w-50 h-auto"
+      />
+
       <p className="text-xl font-semibold text-[#FFB300] animate-pulse">
         Loading Tiny Tigers…
       </p>
@@ -388,11 +394,17 @@ export default function HomePage() {
       {/* ── Sticky header ──────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-20 flex items-center justify-between px-6 py-3 bg-[#FFB300] shadow-md">
         <div className="flex items-center gap-3">
-          <span className="text-3xl" role="img" aria-label="Tiger mascot">🐯</span>
+          <img
+            src="/lilvic.png"
+            alt="Tiny Tigers mascot"
+            className="w-10 h-10"
+          />
+
           <span className="text-xl font-bold text-zinc-900 tracking-tight">
             Tiny Tigers Daycare
           </span>
         </div>
+
         <nav aria-label="Main navigation">
           <a
             href="/waitlist"
