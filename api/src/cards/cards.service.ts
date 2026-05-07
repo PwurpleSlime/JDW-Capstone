@@ -45,4 +45,20 @@ export class CardsService {
 
     return results;
   }
+
+  async getStaffCardByNumber(cardNumber: Number) {
+    const spreadsheetJSON = await getGoogleSheet(1);
+    if (!spreadsheetJSON) throw 'Failed to get spreadsheet';
+
+    const cardKey = `Card ${cardNumber}`;
+    const results: any[] = [];
+
+    for (let i = 0; i < spreadsheetJSON.length; i++) {
+      if (cardKey in spreadsheetJSON[i]) {
+        results.push(spreadsheetJSON[i][cardKey]);
+      }
+    }
+
+    return results;
+  }
 }

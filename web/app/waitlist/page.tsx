@@ -281,7 +281,14 @@ export default function WaitlistPage() {
       {/* Header */}
       <header className="sticky top-0 z-20 flex items-center justify-between px-6 py-3 bg-[#FFB300] shadow-md">
         <div className="flex items-center gap-3">
-          <span className="text-3xl" role="img" aria-label="Tiger mascot">🐯</span>
+          <a href="/">
+            <img
+              src="/lilvic.png"
+              alt="Tiny Tigers mascot"
+              className="w-10 h-10"
+            />
+          </a>
+          
           <span className="text-xl font-bold text-zinc-900 tracking-tight">
             Tiny Tigers Daycare
           </span>
