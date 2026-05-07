@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { getGoogleSheet } from 'src/utilites/spreadsheet';
+import { getGoogleSheet } from '../utilites/spreadsheet';
 
 export interface CardItem {
   link: string;
