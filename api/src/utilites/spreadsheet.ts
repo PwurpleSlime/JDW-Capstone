@@ -23,6 +23,7 @@ export async function getGoogleSheet(selectedSheetByIndex: number){
     console.log(`Doc Title: ${doc.title}`)
 
     const sheet = doc.sheetsByIndex[selectedSheetByIndex]
+    // console.log(sheet)
 
     if (!sheet) {
         throw new Error(`Sheet at index ${selectedSheetByIndex} not found. Available sheets: ${doc.sheetsByIndex.length}`)
@@ -30,5 +31,6 @@ export async function getGoogleSheet(selectedSheetByIndex: number){
 
     console.log(`Sheet Title: ${sheet.title}`)
     const rows = await sheet.getRows()
+    console.log(rows.map(row => row.toObject()))
     return rows.map(row => row.toObject())
 }
