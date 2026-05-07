@@ -34,7 +34,7 @@ export default function ThreeProvider({ children }: { children: React.ReactNode 
     const starGroup = new THREE.Group();
     for (let i = 0; i < 800; i++) {
       const geometry = new THREE.SphereGeometry(0.2, 32, 16);
-      const material = new THREE.MeshBasicMaterial({ color: 0x8b0e04 });
+      const material = new THREE.MeshBasicMaterial({ color: 0xFBBE00 });
       const cube = new THREE.Mesh(geometry, material);
 
       let x = Math.random() * 300 - 150;
