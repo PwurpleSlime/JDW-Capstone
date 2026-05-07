@@ -21,4 +21,11 @@ export class CardsController {
   getCardByNumber(@Param('id') id: string) {
     return this.cardsService.getCardByNumber(Number(id));
   }
+  @Get('/getStaffCardByNumber/:id')
+  @ApiOperation({ summary: 'Get card by card number' })
+  @ApiParam({ name: 'id', type: 'number', description: 'The card number to search for' })
+  @ApiResponse({ status: 200, description: 'Returns array of card content' })
+  getStaffCardByNumber(@Param('id') id: string) {
+    return this.cardsService.getStaffCardByNumber(Number(id));
+  }
 }
