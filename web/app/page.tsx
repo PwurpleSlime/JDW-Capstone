@@ -117,7 +117,11 @@ function Card({ card, index, isMobile, onFocus }: CardProps) {
         />
       ) : (
         <div className="w-full h-48 bg-[#FFB300]/20 flex items-center justify-center">
-          <span className="text-5xl">🐯</span>
+          <img
+            src="/lilvic.png"
+            alt="Tiny Tigers mascot"
+            className="mb-6 w-full max-w-30 h-auto"
+          />
         </div>
       )}
 
