@@ -1,1 +1,0 @@
-- Node version 20 used for api project
